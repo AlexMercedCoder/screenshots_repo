@@ -1,0 +1,37 @@
+<!-- +& SCREENSHOT BY ALEX MERCED OF ALEXMERCEDCODER.COM -->
+<!-- +# Mounting Component Functions to the DOM -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div component="button"></div>
+    <div component="button"></div>
+    <div component="button"></div>
+    <script>
+      ////////////////////////////////JAVASCRIPT////////////////////////////////////////
+      const buttonComponent = {
+        componentProp: "button",
+        renderFunc: () => "<button>Button Component Rendered</button>",
+      };
+
+      const renderComponentToDOM = (component) => {
+        // get all locations component should be mounted to
+        const targets = document.querySelectorAll(
+          `[component="${component.componentProp}"]`
+        );
+        // count the component to each one
+        for (target of targets) {
+          target.innerHTML = component.renderFunc();
+        }
+      };
+
+      renderComponentToDOM(buttonComponent); // render the button component
+      //////////////////////////////////////////////////////////////////////////////////////////
+    </script>
+  </body>
+</html>
